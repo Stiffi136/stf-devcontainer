@@ -42,7 +42,7 @@ Or run it locally from this repository:
 
 ## ESLint Template
 
-This repository also ships a reusable ESLint config template with custom baseline rules.
+This repository also ships a reusable ESLint config template with a very strict AI-focused baseline.
 
 Copy it into a new project:
 
