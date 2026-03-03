@@ -66,14 +66,16 @@ TARGET_DIR="$(cd "$TARGET_DIR" && pwd)"
 DEVCONTAINER_DIR="${TARGET_DIR}/.devcontainer"
 DEVCONTAINER_FILE="${DEVCONTAINER_DIR}/devcontainer.json"
 ESLINT_FILE="${TARGET_DIR}/eslint.config.mjs"
+TSCONFIG_FILE="${TARGET_DIR}/tsconfig.json"
 
 mkdir -p "$DEVCONTAINER_DIR"
 
 if [[ "$FORCE" != "true" ]]; then
-  if [[ -f "$DEVCONTAINER_FILE" || -f "$ESLINT_FILE" ]]; then
+  if [[ -f "$DEVCONTAINER_FILE" || -f "$ESLINT_FILE" || -f "$TSCONFIG_FILE" ]]; then
     echo "Target files already exist. Use --force to overwrite:" >&2
     [[ -f "$DEVCONTAINER_FILE" ]] && echo "  - $DEVCONTAINER_FILE" >&2
     [[ -f "$ESLINT_FILE" ]] && echo "  - $ESLINT_FILE" >&2
+    [[ -f "$TSCONFIG_FILE" ]] && echo "  - $TSCONFIG_FILE" >&2
     exit 1
   fi
 fi
@@ -82,9 +84,11 @@ BASE_URL="https://raw.githubusercontent.com/${OWNER}/${REPO}/${REF}/templates"
 
 curl -fsSL "${BASE_URL}/devcontainer.json" -o "$DEVCONTAINER_FILE"
 curl -fsSL "${BASE_URL}/eslint.config.mjs" -o "$ESLINT_FILE"
+curl -fsSL "${BASE_URL}/tsconfig.json" -o "$TSCONFIG_FILE"
 
 echo "Installed:"
 echo "- $DEVCONTAINER_FILE"
 echo "- $ESLINT_FILE"
+echo "- $TSCONFIG_FILE"
 echo
 echo "Next step: Rebuild/Reopen your project in the Dev Container."

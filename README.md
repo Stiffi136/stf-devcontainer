@@ -17,6 +17,9 @@ A lean, reusable base image for Dev Containers built on TypeScript/Node.
 This image includes AI-focused developer tooling out of the box:
 - OpenAI Codex CLI (`@openai/codex`)
 - Claude Code
+- os-eco (Mulch, Seeds, Canopy, Overstory): https://github.com/jayminwest/os-eco
+- Very strict ESLint template
+- Very strict TypeScript template
 
 ## Use In New Projects
 
@@ -56,12 +59,29 @@ Then run linting inside the container:
 eslint .
 ```
 
+## TypeScript Template
+
+This repository also ships a reusable strict TypeScript config template.
+
+Copy it into a new project:
+
+```bash
+cp templates/tsconfig.json <project>/tsconfig.json
+```
+
+Then run type-checking inside the container:
+
+```bash
+tsc --noEmit
+```
+
 ## Example
 
 ```bash
 mkdir -p <project>/.devcontainer
 cp templates/devcontainer.json <project>/.devcontainer/devcontainer.json
 cp templates/eslint.config.mjs <project>/eslint.config.mjs
+cp templates/tsconfig.json <project>/tsconfig.json
 ```
 
 Then open the project in VS Code / Codespaces inside the container.
