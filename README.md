@@ -21,6 +21,26 @@ This image includes AI-focused developer tooling out of the box:
 - Very strict ESLint template
 - Very strict TypeScript template
 
+## Image Versioning
+
+The GitHub Actions workflow publishes versioned GHCR tags automatically:
+- `latest` for pushes to `main`
+- `sha-<commit>` for every build
+- `vX.Y.Z` and `X.Y` when you push a Git tag like `v1.2.0`
+
+Create a release tag:
+
+```bash
+git tag v1.0.0
+git push origin v1.0.0
+```
+
+Then use a pinned image version in your project, for example:
+
+```json
+"image": "ghcr.io/stiffi136/stf-devcontainer:v1.0.0"
+```
+
 ## Use In New Projects
 
 1. Create `.devcontainer/devcontainer.json` in your project.

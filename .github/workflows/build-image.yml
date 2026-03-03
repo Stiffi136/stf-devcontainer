@@ -2,7 +2,7 @@ name: Build and push container image
 
 on:
   push:
-    branches: ["master"]
+    branches: ["main"]
     tags: ["v*"]
   workflow_dispatch:
 
@@ -24,6 +24,18 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
+      - name: Extract Docker metadata
+        id: meta
+        uses: docker/metadata-action@v5
+        with:
+          images: ghcr.io/stiffi136/stf-devcontainer
+          tags: |
+            type=raw,value=latest,enable={{is_default_branch}}
+            type=sha,format=short
+            type=ref,event=tag
+            type=semver,pattern={{version}},value={{tag}}
+            type=semver,pattern={{major}}.{{minor}},value={{tag}}
+
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
 
@@ -32,6 +44,5 @@ jobs:
         with:
           context: .
           push: true
-          tags: |
-            ghcr.io/stiffi136/stf-devcontainer:latest
-            ghcr.io/stiffi136/stf-devcontainer:${{ github.sha }}
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
