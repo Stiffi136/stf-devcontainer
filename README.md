@@ -18,24 +18,27 @@ This image includes AI-focused developer tooling out of the box:
 - OpenAI Codex CLI (`@openai/codex`)
 - Claude Code
 
-## Build The Image Locally
-
-```bash
-docker build -t stf-devcontainer:local .
-```
-
 ## Use In New Projects
 
-1. Push the image to a registry (for example, GHCR):
-
-```bash
-docker tag stf-devcontainer:local ghcr.io/stiffi136/stf-devcontainer:latest
-docker push ghcr.io/stiffi136/stf-devcontainer:latest
-```
-
-2. Create `.devcontainer/devcontainer.json` in your project.
+1. Create `.devcontainer/devcontainer.json` in your project.
 
 Use `templates/devcontainer.json` as a starting point and adjust the image name if needed.
+
+2. Rebuild/Reopen the project in the container in VS Code.
+
+## Setup Script
+
+You can bootstrap a project automatically by downloading the templates from GitHub:
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/stiffi136/stf-devcontainer/main/scripts/setup-devcontainer.sh | bash
+```
+
+Or run it locally from this repository:
+
+```bash
+./scripts/setup-devcontainer.sh --target <project>
+```
 
 ## ESLint Template
 
