@@ -20,6 +20,8 @@ RUN bun install -g \
 
 RUN npm i -g @openai/codex
 
+RUN npm i -g eslint
+
 RUN curl -fsSL https://claude.ai/install.sh | bash
 
 USER node

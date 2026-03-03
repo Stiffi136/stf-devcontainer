@@ -9,7 +9,7 @@ A lean, reusable base image for Dev Containers built on TypeScript/Node.
 - `bun` (installed system-wide)
 - `tmux`
 - Globally installed Bun CLIs: `@os-eco/mulch-cli`, `@os-eco/seeds-cli`, `@os-eco/canopy-cli`, `@os-eco/overstory-cli`
-- Globally installed npm CLI: `@openai/codex`
+- Globally installed npm CLIs: `@openai/codex`, `eslint`
 - Claude Code (via `curl -fsSL https://claude.ai/install.sh | bash`)
 
 ## AI Tooling
@@ -37,11 +37,28 @@ docker push ghcr.io/stiffi136/stf-devcontainer:latest
 
 Use `templates/devcontainer.json` as a starting point and adjust the image name if needed.
 
+## ESLint Template
+
+This repository also ships a reusable ESLint config template with custom baseline rules.
+
+Copy it into a new project:
+
+```bash
+cp templates/eslint.config.mjs <project>/eslint.config.mjs
+```
+
+Then run linting inside the container:
+
+```bash
+eslint .
+```
+
 ## Example
 
 ```bash
 mkdir -p <project>/.devcontainer
 cp templates/devcontainer.json <project>/.devcontainer/devcontainer.json
+cp templates/eslint.config.mjs <project>/eslint.config.mjs
 ```
 
 Then open the project in VS Code / Codespaces inside the container.

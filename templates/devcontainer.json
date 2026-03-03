@@ -6,7 +6,7 @@
     "source=codex-config,target=/home/node/.codex,type=volume"
   ],
   "updateRemoteUserUID": true,
-  "postCreateCommand": "node --version && bun --version && codex --version",
+  "postCreateCommand": "node --version && bun --version && codex --version && eslint --version",
   "customizations": {
     "vscode": {
       "settings": {
