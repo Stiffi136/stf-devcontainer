@@ -65,3 +65,12 @@ cp templates/eslint.config.mjs <project>/eslint.config.mjs
 ```
 
 Then open the project in VS Code / Codespaces inside the container.
+
+## Project Initialization
+
+```bash
+# Initialize in your project
+cd your-project
+git init
+ml init && sd init && cn init && ov init
+```
