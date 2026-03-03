@@ -15,8 +15,7 @@
       "extensions": [
         "openai.chatgpt",
         "anthropic.claude-code",
-        "esbenp.prettier-vscode",
-        "eamodio.gitlens"
+        "esbenp.prettier-vscode"
       ]
     }
   }
