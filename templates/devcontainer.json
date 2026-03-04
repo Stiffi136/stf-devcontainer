@@ -3,7 +3,8 @@
   "image": "ghcr.io/stiffi136/stf-devcontainer:latest",
   "remoteUser": "node",
   "mounts": [
-    "source=codex-config,target=/home/node/.codex,type=volume"
+    "source=codex-config,target=/home/node/.codex,type=volume",
+    "source=claude-config,target=/home/node/.claude,type=volume"
   ],
   "updateRemoteUserUID": true,
   "postCreateCommand": "node --version && bun --version && codex --version && eslint --version",
